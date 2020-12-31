@@ -44,13 +44,13 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
 ## ~~部署指南~~
 
-**由于酷Q已停止维护，本指南已失效。您可以使用[CQHTTP Mirai](https://github.com/yyuueexxiinngg/onebot-kotlin)或[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)作为替代。由于当前mirai仍不稳定（甚至可能删库跑路），请自行参考相应的文档进行部署，本项目组不解答部署问题。**
+**由于酷Q已停止维护，您可以使用[CQHTTP Mirai](https://github.com/yyuueexxiinngg/onebot-kotlin)或[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)作为替代。由于当前mirai仍不稳定（甚至可能删库跑路），请自行参考相应的文档进行部署，本项目组不解答部署问题。**
 
 本bot功能繁多，部分功能需要静态图片资源和带有认证的api key，恕不能公开。部分静态图片等资源请阅读源码后自行解决。
 
 ### 部署步骤
 
-#### Windows 部署(本地计算机或服务器)
+#### Windows 部署 (本地计算机或服务器)
 
 1. 安装下面的软件/工具(编辑器在Notepad++和Visual Studio Code中选择一个即可)
     - Python 3.8：https://www.python.org/downloads/windows/
@@ -63,9 +63,9 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     - CQHTTP Mirai：https://github.com/yyuueexxiinngg/onebot-kotlin
     - go-cqhttp：https://github.com/Mrs4s/go-cqhttp/
 
-3. 修改CQHTTP的配置文件，下面的配置可供参考(若使用其他如cqps等bot需要打开http_config)：
+3. 修改CQHTTP的配置文件，下面的配置可供参考(若使用其他如cqps等bot需要打开并配置http_config)：
 
-    ```json
+    ```hjson
     http_config: {
         enabled: false
         host: 0.0.0.0
@@ -122,45 +122,34 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
 
 
-#### Linux 部署(ssh等工具连接服务器)
+#### Linux 部署 (ssh等工具连接服务器)
 
-1. 安装 python3.8：参考https://docs.docker.com/engine/install/debian/
+1. 安装 python3.8 并设置pip：[参考](https://my.oschina.net/u/2401395/blog/3189222)
+    
+    > 若此处未安装设置成功，请务必解决，百度或谷歌搜索一般即可找到解决办法。 
 
-2. 部署 docker：下面一条命令仅供参考，请根据实际情况修改参数；详细说明可见 [CQHTTP 文档 -> Docker](https://cqhttp.cc/docs/#/Docker)
+2. 安装 screen (仅供参考，您也可以使用tmux等其他窗口工具)：
 
     ```bash
-    sudo docker run -d --name=hoshino \
-    -v $(pwd)/coolq:/home/user/coolq \
-    -p 9000:9000 \
-    -e VNC_PASSWD=MAXchar8 \
-    -e COOLQ_ACCOUNT=10000 \
-    -e COOLQ_URL=https://dlsec.cqp.me/cqp-full \
-    -e CQHTTP_SERVE_DATA_FILES=no \
-    -e CQHTTP_USE_HTTP=no \
-    -e CQHTTP_USE_WS_REVERSE=yes \
-    -e CQHTTP_WS_REVERSE_URL=ws://172.17.0.1:8080/ws/ \
-    -e CQHTTP_WS_REVERSE_USE_UNIVERSAL_CLIENT=yes \
-    richardchien/cqhttp:latest
+    # 根据系统选择命令安装
+    yum install screen 
+    apt-get install screen
     ```
 
-    > 使用这行命令`ip addr show docker0 | grep -Po 'inet \K[\d.]+'`查看你的docker桥ip，替换`CQHTTP_WS_REVERSE_URL`中的链接
-    >
-    > 然后访问 `http://<你的IP>:9000/` 进入 noVNC（默认密码 `MAXchar8`），登录 酷Q
-    > 
-    > 注：如果你希望先使用酷Q Air进行尝试，请将COOLQ_URL设置为`https://dlsec.cqp.me/cqa-xiaoi`；之后可以用CQP.exe替换CQA.exe以升级，或删除容器重新创建。
-
-3. 回到我们熟悉的命令行，安装 Python 3.8
-
+    > 常用screen命令参数介绍
     ```bash
-    # Ubuntu or Debian
-    sudo apt install python3.8
+    screen -S yourname  # 新建一个名为yourname的screen
+    screen -ls          # 列出当前所有的screen作业
+    screen -r yourname  # 回到yourname这个screen
+    screen -d yourname  # 将yourname这个screen作业离线
+    screen -d -r yourname  # 结束当前作业并回到yourname的作业
+    screen -wipe  # 检查目前所有的screen作业，并删除已经无法使用的screen作业
     ```
-    > 若您的包管理工具（如`yum`）尚不支持`python3.8`，你可以尝试从源码安装。  
-    >
-    > Google will help you greatly : )
+    >另外，在每个screen作业下，所有命令都以`ctrl+a(C-a)`开始，输入`C-a ?`显示所有键绑定信息
 
-4. 克隆本仓库并安装依赖包
+4. 在合适的文件夹克隆本仓库并安装依赖包
     ```bash
+    cd /root/
     git clone https://github.com/Ice-Cirno/HoshinoBot.git
     cd HoshinoBot
     python3.8 -m pip install -r requirements.txt
