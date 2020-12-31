@@ -1,15 +1,15 @@
 from nonebot import on_command, CommandSession
 from nonebot import permission as perm
-
 from sogou_tr import sogou_tr
 from datetime import datetime, timedelta
-
+from hoshino import priv, Service
 # sogou_tr使用帮助：
 # print(sogou_tr('hello world'))  # -> '你好世界'
 # print(sogou_tr('hello world', to_lang='de'))  # ->'Hallo Welt'
 # print(sogou_tr('hello world', to_lang='fr'))  # ->'Salut tout le monde'
 # print(sogou_tr('hello world', to_lang='ja'))  # ->'ハローワールド'
 
+sv = Service('translate', manage_priv=priv.SUPERUSER) 
 
 @on_command('translate', aliases=('翻译', '翻譯', '翻訳'), only_to_me=False)
 async def translate(session: CommandSession):
