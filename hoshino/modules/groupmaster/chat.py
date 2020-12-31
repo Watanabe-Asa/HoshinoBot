@@ -1,9 +1,10 @@
 import random
-
+import pytz
 from nonebot import on_command
-
+import hoshino
 from hoshino import R, Service, priv, util
 
+tz = pytz.timezone('Asia/Shanghai')
 
 # basic function for debug, not included in Service('chat')
 @on_command('zai?', aliases=('在?', '在？', '在吗', '在么？', '在嘛', '在嘛？'), only_to_me=True)
@@ -44,13 +45,35 @@ async def seina(bot, ev):
 @sv.on_fullmatch(('我有个朋友说他好了', '我朋友说他好了', ))
 async def ddhaole(bot, ev):
     await bot.send(ev, '那个朋友是不是你弟弟？')
-    await util.silence(ev, 30)
 
 
 @sv.on_fullmatch('我好了')
 async def nihaole(bot, ev):
     await bot.send(ev, '不许好，憋回去！')
-    await util.silence(ev, 30)
+    
+ 
+@sv.on_fullmatch(('晚安', '晚安哦', '晚安啦', 'good night'), only_to_me=False)
+async def goodnight(bot, ev):
+    now_hour=datetime.now(tz).hour
+    if now_hour<=4 or now_hour>=21:
+        await bot.send(ev, 'おやすみなさい～')
+    elif 19<=now_hour<21:
+        await bot.send(ev, f'现在才{now_hour}点，这么早就睡了吗？')
+    else:
+        await bot.send(ev, f'现在才{now_hour}点，还没到晚上啦。')
+
+
+@sv.on_fullmatch(('早安', '早安哦', '早上好', '早上好啊', '早上好呀', '早', 'good morning'), only_to_me=False)
+async def goodmorning(bot, ev):
+    now_hour=datetime.now(tz).hour
+    if 0<=now_hour<6:
+        await bot.send(ev, f'好早，现在才{now_hour}点呢')
+    elif 6<=now_hour<10:
+        await bot.send(ev, '早上好！今天打算做什么呢？')
+    elif 20<=now_hour<24:
+        await bot.send(ev, '别闹，准备睡觉啦！')
+    else:
+        await bot.send(ev, f'{now_hour}点了才起床吗...要注重生活作息哦') 
 
 
 # ============================================ #
@@ -72,14 +95,3 @@ async def chat_clanba(bot, ctx):
 async def chat_neigui(bot, ctx):
     if random.random() < 0.10:
         await bot.send(ctx, R.img('内鬼.png').cqcode)
-
-nyb_player = f'''{R.img('newyearburst.gif').cqcode}
-正在播放：New Year Burst
-──●━━━━ 1:05/1:30
-⇆ ㅤ◁ ㅤㅤ❚❚ ㅤㅤ▷ ㅤ↻
-'''.strip()
-
-@sv.on_keyword(('春黑', '新黑'))
-async def new_year_burst(bot, ev):
-    if random.random() < 0.02:
-        await bot.send(ev, nyb_player)
