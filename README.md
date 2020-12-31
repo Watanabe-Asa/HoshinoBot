@@ -1,6 +1,6 @@
 # HoshinoBot
 
-A qqbot for Princess Connect Re:Dive (and other usage :)
+Fork自[Ice-Cirno](https://github.com/Ice-Cirno)的[HoshinoBot](https://github.com/Ice-Cirno/HoshinoBot)项目，但移除了大多数功能(主要是pcr功能)保留框架核心，帮助非pcr玩家接触和自定义HoshinoBot(其实是私用)。
 
 **2020年8月2日0点，qq机器人框架相继停止维护。**
 **感谢 酷Q项目 和 CQHTTP插件 的开发者们！感谢他们让Hoshino得以诞生！**
@@ -12,48 +12,18 @@ A qqbot for Princess Connect Re:Dive (and other usage :)
 **HoshinoBot:** 基于 [nonebot](http://nonebot.cqp.moe) 框架，开源、无公害、非转基因的QQ机器人。
 
 
-
 ## 功能介绍
 
-HoshinoBot 的功能开发以服务 [公主连结☆Re:Dive](http://priconne-redive.jp) 玩家为核心，主要功能有：
+HoshinoBot原本主要功能请见[原文档](https://github.com/Ice-Cirno/HoshinoBot)，本fork项目保留的功能有：
 
-- **转蛋模拟**：单抽、十连、抽一井
-- **竞技场解法查询**：支持按服务器过滤，支持反馈点赞点踩
-- **竞技场结算提醒**
-- **公会战管理**：详细说明见[此文档](hoshino/modules/pcrclanbattle/clanbattle/README.md)
-- **Rank推荐表搬运**
-- **常用网址速查**
-- **官方推特转发**
-- **官方四格推送**
-- **角色别称转换**
-- **切噜语编解码**：切噜～♪
-- **竞技场余矿查询**
-
-> 由于bot的功能会快速迭代开发，使用方式这里不进行具体的说明，请向bot发送"help"或移步[此文件](hoshino/modules/botmanage/help.py)查看详细。会战管理功能的详细说明，请[点击这里](hoshino/modules/pcrclanbattle/clanbattle/README.md)
-
-HoshinoBot 还具有以下通用功能：
-
-- **[蜜柑计划](http://mikanani.me)番剧更新订阅**
 - **入群欢迎**&**退群提醒**
 - **复读**
-- **掷骰子**
-- **精致睡眠套餐**
 - **机器翻译**
+- **官方推特转发**
+- **[蜜柑计划](http://mikanani.me)番剧更新订阅**
+- **精致睡眠套餐**
 - **反馈发送**：反馈内容将由bot私聊发送给维护组
 
-此外，HoshinoBot 为 [艦隊これくしょん](http://www.dmm.com/netgame/feature/kancolle.html) 玩家开发了以下功能：
-
-- **官推转发**：「艦これ」開発/運営 & C2機関
-- **时报**
-- **演习时间提醒**
-- **月度远征提醒**
-- **舰娘信息查询**：`*晓改二`
-- **装备信息查询**：`*震电改`
-- **战果人事表查询**：`人事表191201`
-
-> 艦これ相关功能由于个人精力实在有限，无法进行更多功能（如海图攻略）的开发/维护。
->
-> 如果您有新的想法，欢迎联系我！即便您不会编程，您也可以在内容更新上帮到我们！
 
 -------------
 
@@ -74,42 +44,54 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
 ## ~~部署指南~~
 
-**由于酷Q已停止维护，本指南已失效。您可以使用[CQHTTP Mirai](https://github.com/yyuueexxiinngg/cqhttp-mirai)或[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)作为替代。由于当前mirai仍不稳定（甚至删库跑路），请自行参考相应的文档进行部署，本项目组不解答部署问题。**
+**由于酷Q已停止维护，本指南已失效。您可以使用[CQHTTP Mirai](https://github.com/yyuueexxiinngg/onebot-kotlin)或[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)作为替代。由于当前mirai仍不稳定（甚至可能删库跑路），请自行参考相应的文档进行部署，本项目组不解答部署问题。**
 
-本bot功能繁多，部分功能需要静态图片资源和带有认证的api key，恕不能公开。本指南将首先带领您搭建具有**模拟抽卡(纯文字版)**、**会战管理**功能的HoshinoBot。其他功能需额外配置，请参考本章**更进一步**的对应小节。
+本bot功能繁多，部分功能需要静态图片资源和带有认证的api key，恕不能公开。部分静态图片等资源请阅读源码后自行解决。
 
 ### 部署步骤
 
-#### Windows 部署
+#### Windows 部署(本地计算机或服务器)
 
-1. 安装下面的软件/工具
+1. 安装下面的软件/工具(编辑器在Notepad++和Visual Studio Code中选择一个即可)
     - Python 3.8：https://www.python.org/downloads/windows/
     - Git：https://git-scm.com/download/win
     - Notepad++：https://notepad-plus-plus.org/downloads/
+    - Visual Studio Code：https://code.visualstudio.com/
 
-2. 安装 酷Q 及 CQHTTP 插件
+2. 部署CQHTTP Mirai或go-cqhttp
 
-    - 酷Q Air：https://cqp.cc/t/23253 （如无法打开，使用此下载直链：https://dlsec.cqp.me/cqa-full）
-    - CQHTTP 插件：https://github.com/richardchien/coolq-http-api/releases
+    - CQHTTP Mirai：https://github.com/yyuueexxiinngg/onebot-kotlin
+    - go-cqhttp：https://github.com/Mrs4s/go-cqhttp/
 
-    > 初次部署建议先在本地尝试，酷Q Air版即可，待部署成功后再尝试服务器搭建与酷Q Pro版
-
-3. 运行 酷Q，启用 CQHTTP插件，修改CQHTTP插件的配置文件，下面的配置可供参考：
+3. 修改CQHTTP的配置文件，下面的配置可供参考(若使用其他如cqps等bot需要打开http_config)：
 
     ```json
-    {
-        "use_http": false,
-        "use_ws": false,
-        "use_ws_reverse": true,
-        "ws_reverse_use_universal_client": true,
-        "ws_reverse_url": "ws://127.0.0.1:8080/ws/",
-        "serve_data_files": false
+    http_config: {
+        enabled: false
+        host: 0.0.0.0
+        port: 5700
+        timeout: 0
+        post_urls: {}
     }
+    ws_config: {
+        enabled: false
+        host: 0.0.0.0
+        port: 6700
+    }
+    ws_reverse_servers: [
+        {
+            enabled: true
+            reverse_url: ws://127.0.0.1:8080/ws/
+            reverse_api_url: ws://you_websocket_api.server
+            reverse_event_url: ws://you_websocket_event.server
+            reverse_reconnect_interval: 3000
+        }
+    ]
     ```
 
     关于CQHTTP插件的配置说明，详见 [CQHTTP 文档 -> 配置](https://cqhttp.cc/docs/#/Configuration)
 
-4. 打开一个合适的文件夹，点击资源管理器左上角的 `文件 -> 打开Windows Powershell`
+4. 打开一个合适的文件夹，点击资源管理器左上角的 `文件 -> 打开Windows Powershell`(或者其他本地shell工具)
 
 5. 输入以下命令克隆本仓库并安装依赖
 
@@ -120,9 +102,9 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     ```
     >若此处有报错信息，请务必解决，将错误信息复制到百度搜索一般即可找到解决办法。  
     >
-    >若安装python依赖库时下载速度缓慢，可以尝试使用`py -3.8 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`
+    >若安装python依赖库时下载速度缓慢，可以尝试使用`py -3.8 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`命令换源下载
 
-6. 回到资源管理器，进入`hoshino`文件夹，将`config_example`文件夹重命名为`config`，然后右键使用Notepad++打开其中的`__bot__.py`，按照其中的注释说明进行编辑。
+6. 回到资源管理器，进入`hoshino`文件夹，将`config_example`文件夹重命名为`config`，然后右键使用所安装的编辑器打开其中的`__bot__.py`，按照其中的注释说明进行编辑。
 
     > 如果您不清楚某项设置的作用，请保持默认
     
@@ -132,19 +114,17 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     py -3.8 run.py
     ```
 
-    私聊机器人发送`在？`，若机器人有回复，恭喜您！您已经成功搭建起HoshinoBot了。之后您可以尝试在群内发送`!帮助`以查看会战管理的相关说明，发送`help`查看其他一般功能的相关说明，发送`pcr速查`查看常用网址等。
+    私聊机器人发送`在？`，若机器人有回复，恭喜您！您已经成功搭建起HoshinoBot了。之后您可以尝试在群内发送`help`查看一般功能的相关说明。
 
-    注意，此时您的机器人功能还不完全，部分功能可能无法正常工作。若希望您的机器人可以发送图片，或使用其他进阶功能，请参考本章**更进一步**的对应小节。
-
-
+    注意，此时您的机器人功能还不完全，部分功能可能无法正常工作。若希望您的机器人可以发送图片，或使用其他功能，请参考本章**更进一步**的对应小节。
 
 
 
-#### Linux 部署
 
-由于 酷Q 仅支持 Windows 环境，我们需要使用 docker 镜像来部署 酷Q 及 CQHTTP 插件。但别担心，相信我，这比 Windows 下部署更简单！您可以在[这个文档](https://cqhttp.cc/docs/)找到详细的说明。下面将带领您进行部署：
 
-1. 安装 docker：参考https://docs.docker.com/engine/install/debian/
+#### Linux 部署(ssh等工具连接服务器)
+
+1. 安装 python3.8：参考https://docs.docker.com/engine/install/debian/
 
 2. 部署 docker：下面一条命令仅供参考，请根据实际情况修改参数；详细说明可见 [CQHTTP 文档 -> Docker](https://cqhttp.cc/docs/#/Docker)
 
