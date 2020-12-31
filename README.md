@@ -96,7 +96,7 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 5. 输入以下命令克隆本仓库并安装依赖
 
     ```powershell
-    git clone https://github.com/Ice-Cirno/HoshinoBot.git
+    git clone https://github.com/Watanabe-Asa/HoshinoBot.git
     cd HoshinoBot
     py -3.8 -m pip install -r requirements.txt
     ```
