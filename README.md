@@ -164,8 +164,9 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     >
     > 您也可以使用`vim`编辑器，若您从未使用过，推荐您使用 `nano` : )
     
-6. 运行bot
+6. 新建一个独立的screen作业，运行bot
     ```bash
+    screen -S hoshino  # 可自定义screen名
     python3.8 run.py
     ```
     
