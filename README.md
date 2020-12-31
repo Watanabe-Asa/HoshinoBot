@@ -149,8 +149,8 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
 4. 在合适的文件夹克隆本仓库并安装依赖包
     ```bash
-    cd /root/
-    git clone https://github.com/Ice-Cirno/HoshinoBot.git
+    cd /root/  # 或者自定义其他位置
+    git clone https://github.com/Watanabe-Asa/HoshinoBot.git
     cd HoshinoBot
     python3.8 -m pip install -r requirements.txt
     ```
@@ -162,21 +162,22 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     ```
     > 配置文件内有相应注释，请根据您的实际配置填写，HoshinoBot仅支持反向ws通信
     >
-    > 您也可以使用`vim`编辑器，若您从未使用过，我推荐您使用 `nano` : )
+    > 您也可以使用`vim`编辑器，若您从未使用过，推荐您使用 `nano` : )
+    
 6. 运行bot
     ```bash
     python3.8 run.py
     ```
     
-    私聊机器人发送`在？`，若机器人有回复，恭喜您！您已经成功搭建起HoshinoBot了。之后您可以尝试在群内发送`!帮助`以查看会战管理的相关说明，发送`help`查看其他一般功能的相关说明，发送`pcr速查`查看常用网址等。
+    私聊机器人发送`在？`，若机器人有回复，恭喜您！您已经成功搭建起HoshinoBot了。之后您可以尝试在群内发送`help`查看一般功能的相关说明。
     
-    注意，此时您的机器人功能还不完全，部分功能可能无法正常工作。若希望您的机器人可以发送图片，或使用其他进阶功能，请参考本章**更进一步**的对应小节。
+    注意，此时您的机器人功能还不完全，部分功能可能无法正常工作。若希望您的机器人可以发送图片，或使用其他功能，请参考本章**更进一步**的对应小节。
 
 
 
 ### 更进一步
 
-现在，机器人已经可以使用`会战管理`、`模拟抽卡(纯文字版)`等基本功能了。但还无法使用`竞技场查询`、`番剧订阅`、`推特转发`等功能。这是因为，这些功能需要对应的静态图片资源以及相应的api key。相应资源获取有难有易，您可以根据自己的需要去获取。
+现在，机器人已经可以使用一些基本功能了。但还无法使用`番剧订阅`、`推特转发`等功能。这是因为，这些功能需要相应的api key及一些静态资源。相应资源获取有难有易，您可以根据自己的需要去获取。
 
 下面将会分别介绍资源与api key的获取方法：
 
@@ -187,30 +188,21 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 > 发送图片的条件：  
 > 1. 静态图片资源
 
-您可能希望看到更为精致的图片版结果，若希望机器人能够发送图片，首先需要您购买酷Q Pro版，其次需要准备静态图片资源，其中包括：
+您可能希望看到更为精致的图片版结果，若希望机器人能够发送图片，需要准备静态图片资源，其中包括：
 
-- 公主连接角色头像（来自 [干炸里脊资源站](https://redive.estertion.win/) 的拆包）
-- 公主连接官方四格漫画
-- 公主连接每月rank推荐表
 - 表情包杂图
 - setu库
-- [是谁呼叫舰队](http://fleet.diablohu.com/)舰娘&装备页面截图
-- 艦これ人事表
+- 其他(根据需要补充)
 
-等资源。自行收集可能较为困难，所以我们准备了一个较为精简的资源包以及下载脚本，可以满足公主连接相关功能的日常使用。如果需要，请加入QQ群 **Hoshino的后花园** 367501912，下载群文件中的`res.zip`。
+等资源。自行收集可能较为困难，所以我们准备了一个较为精简的资源包以及下载脚本，可以满足相关功能的日常使用。如果需要，请加入QQ群 **Hoshino的后花园** 367501912，下载群文件中的`res.zip`。
 
-
-
-#### pcrdfans授权key
-
-竞技场查询功能的数据来自 [公主连结Re: Dive Fan Club - 硬核的竞技场数据分析站](https://pcrdfans.com/) ，查询需要授权key。您可以向pcrdfans的作者索要。（注：由于最近机器人搭建者较多，pcrdfans的作者最近常被打扰，我们**不建议**您因本项目而去联系他，推荐您前往网站[pcrdfans.com](https://pcrdfans.com)进行查询）
-
-若您已有授权key，在文件`hoshino/config/priconne.py`中填写您的key：
-
-```python
-class arena:
-    AUTH_KEY = "your_key"
-```
+或者在合适的文件夹位置使用命令创建文件夹，并用相关工具上传所需图片至相应位置。
+    ```bash
+    cd /root/  # 或者自定义其他位置
+    mkdir res
+    cd res
+    mkdir img
+    ```
 
 
 
@@ -235,19 +227,6 @@ MIKAN_TOKEN = "abcdfegABCFEFG+123=="
 
 
 
-#### 时报文本
-
-> 请先在`hoshino/config/__bot__.py`的`MODULES_ON`中取消`hourcall`的注释  
-> 本功能默认关闭，在群内发送 "启用 hourcall" 即可开启
-
-报时功能使用/魔改了艦これ中各个艦娘的报时语音，您可以在[舰娘百科](https://zh.kcwiki.org/wiki/舰娘百科)或[艦これ 攻略 Wiki](https://wikiwiki.jp/kancolle/)找到相应的文本/翻译，当然您也可以自行编写台词。在此，我们向原台词作者[田中](https://bbs.nga.cn/read.php?tid=9143913)[谦介](http://nga.178.com/read.php?tid=14045507)先生和他杰出的游戏作品表达诚挚的感谢！
-
-若您已获取时报文本，在文件`hoshino/config/hourcall.py`中填写您的文本。
-
-您可以编入多组报时文本，机器人会按`HOUR_CALLS_ON`中定义的顺序循环日替。
-
-
-
 #### 推特转发
 
 推特转发功能需要推特开发者账号，具体申请方法请自行[Google](http://google.com)。注：现在推特官方大概率拒绝来自中国大陆的新申请，自备海外手机号及大学邮箱可能会帮到您。
@@ -263,19 +242,8 @@ access_token_secret = "your_access_token_secret"
 
 
 
-#### 晴乃词库
+#### 其他功能
 
-舰娘及装备查询功能使用了精简版的晴乃词库，如有需要请加QQ群[Hoshino的后花园](https://jq.qq.com/?wv=1027&k=55fGEgi)或联系晴乃维护组。
+其他更多适配HoshinoBot的功能插件可以在[社区](https://github.com/pcrbot)找到([插件索引](https://github.com/pcrbot/HoshinoBot-plugins-index))或者直接在github中搜索并自行适配安装。
 
-
-
-
-
-## 友情链接
-
-**干炸里脊资源站**: https://redive.estertion.win/
-
-**公主连结Re: Dive Fan Club - 硬核的竞技场数据分析站**: https://pcrdfans.com/
-
-**yobot**: https://yobot.win/
-
+大多数的插件若无特殊说明，安装方法为在文件夹`hoshino/modules/`下上传或者使用命令`git clone`获取插件文件夹，随后使用命令`pip install XXX`(XXX为插件需求的依赖名)安装依赖，最后在`hoshino/config/__bot__.py`的`MODULES_ON`中添加插件名。当然具体的使用请详细阅读对应的Readme文档。
