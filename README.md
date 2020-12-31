@@ -138,9 +138,9 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
     > 常用screen命令参数介绍
     ```bash
-    screen -S yourname  # 新建一个名为yourname的screen
+    screen -S yourname  # 新建一个名为yourname的screen作业
     screen -ls          # 列出当前所有的screen作业
-    screen -r yourname  # 回到yourname这个screen
+    screen -r yourname  # 回到yourname这个screen作业
     screen -d yourname  # 将yourname这个screen作业离线
     screen -d -r yourname  # 结束当前作业并回到yourname的作业
     screen -wipe  # 检查目前所有的screen作业，并删除已经无法使用的screen作业
