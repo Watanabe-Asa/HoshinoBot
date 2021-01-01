@@ -152,7 +152,7 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     cd /root/  # 或者自定义其他位置
     git clone https://github.com/Watanabe-Asa/HoshinoBot.git
     cd HoshinoBot
-    python3.8 -m pip install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     ```
 
 5. 编辑配置文件
@@ -167,7 +167,7 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 6. 新建一个独立的screen作业，运行bot
     ```bash
     screen -S hoshino  # 可自定义screen名
-    python3.8 run.py
+    python3 run.py
     ```
     
     私聊机器人发送`在？`，若机器人有回复，恭喜您！您已经成功搭建起HoshinoBot了。之后您可以尝试在群内发送`help`查看一般功能的相关说明。
@@ -248,4 +248,4 @@ access_token_secret = "your_access_token_secret"
 
 其他更多适配HoshinoBot的功能插件可以在[社区](https://github.com/pcrbot)找到([插件索引](https://github.com/pcrbot/HoshinoBot-plugins-index))或者直接在github中搜索并自行适配安装。
 
-大多数的插件若无特殊说明，安装方法为在文件夹`hoshino/modules/`下上传或者使用命令`git clone`获取插件文件夹，随后使用命令`pip install XXX`(XXX为插件需求的依赖名)安装依赖，最后在`hoshino/config/__bot__.py`的`MODULES_ON`中添加插件名。当然具体的使用请详细阅读对应的Readme文档。
+大多数的插件若无特殊说明，安装方法为在文件夹`hoshino/modules/`下上传或者使用命令`git clone`获取插件文件夹，随后使用命令`pip3 install XXX`(XXX为插件需求的依赖名)安装依赖，最后在`hoshino/config/__bot__.py`的`MODULES_ON`中添加插件名。当然具体的使用请详细阅读对应的Readme文档。
