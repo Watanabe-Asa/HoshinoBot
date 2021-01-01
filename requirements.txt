@@ -15,3 +15,4 @@ tinydb>=4.0
 aiohttp>=3.6
 TwitterAPI
 sogou-tr-free
+logzero
