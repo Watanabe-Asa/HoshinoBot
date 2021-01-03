@@ -18,6 +18,7 @@ HoshinoBot原本主要功能请见[原文档](https://github.com/Ice-Cirno/Hoshi
 
 - **入群欢迎**&**退群提醒**
 - **复读**
+- **机器翻译**
 - **官方推特转发**
 - **[蜜柑计划](http://mikanani.me)番剧更新订阅**
 - **精致睡眠套餐**
