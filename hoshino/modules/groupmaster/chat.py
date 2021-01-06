@@ -38,11 +38,6 @@ async def chat_mua(bot, ev):
     await bot.send(ev, '笨蛋~', at_sender=True)
 
 
-@sv.on_fullmatch('来点星奏')
-async def seina(bot, ev):
-    await bot.send(ev, R.img('星奏.png').cqcode)
-
-
 @sv.on_fullmatch(('我有个朋友说他好了', '我朋友说他好了', ))
 async def ddhaole(bot, ev):
     await bot.send(ev, '那个朋友是不是你弟弟？')
@@ -84,12 +79,6 @@ async def goodmorning(bot, ev):
 async def chat_queshi(bot, ctx):
     if random.random() < 0.05:
         await bot.send(ctx, R.img('确实.jpg').cqcode)
-
-
-@sv.on_keyword(('会战'))
-async def chat_clanba(bot, ctx):
-    if random.random() < 0.02:
-        await bot.send(ctx, R.img('我的天啊你看看都几度了.jpg').cqcode)
 
 
 @sv.on_keyword(('内鬼'))
